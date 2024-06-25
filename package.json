@@ -6,11 +6,14 @@
   "scripts": {
     "test": "jest",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --edit"
   },
   "author": "Matteo Depascale",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/aws-lambda": "^8.10.140",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.8",
@@ -34,18 +37,8 @@
     "@middy/core": "^5.4.1"
   },
   "lint-staged": {
-    "**/*.ts": [
+    "**/*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.json": [
-      "prettier --write"
-    ],
-    "**/*.md": [
       "prettier --write"
     ]
   }
