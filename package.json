@@ -4,7 +4,7 @@
   "description": "AWS Lambda template in Node.js with everything you need in it!",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "commitlint": "commitlint --edit"
@@ -47,5 +47,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "type": "module"
 }

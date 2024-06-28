@@ -1,4 +1,5 @@
-const { main } = require('./index');
+import { main } from './index';
+import { jest } from '@jest/globals'
 
 jest.mock('@aws-lambda-powertools/logger', () => {
   return {
@@ -69,12 +70,12 @@ describe('main handler', () => {
       logGroupName: '/aws/lambda/test-function',
       logStreamName: '2020/11/11/[$LATEST]abcdef1234567890abcdef',
       getRemainingTimeInMillis: () => 3000,
-      done: () => {},
-      fail: () => {},
-      succeed: () => {},
+      done: () => { },
+      fail: () => { },
+      succeed: () => { },
     };
 
-    const result = await main(event, context, () => {});
+    const result = await main(event, context, () => { });
 
     expect(result.statusCode).toBe(200);
     expect(JSON.parse(result.body)).toEqual({ message: 'Hello World' });
