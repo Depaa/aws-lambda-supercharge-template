@@ -1,9 +1,4 @@
-import {
-  APIGatewayProxyEvent,
-  APIGatewayProxyResult,
-  Context,
-} from 'aws-lambda';
-import { main } from './index';
+const { main } = require('./index');
 
 jest.mock('@aws-lambda-powertools/logger', () => {
   return {
@@ -19,10 +14,10 @@ jest.mock('@aws-lambda-powertools/logger', () => {
 
 describe('main handler', () => {
   it('should return a 200 status code and a Hello World message', async () => {
-    const event: APIGatewayProxyEvent = {
+    const event = {
       body: null,
       headers: {},
-      httpMethod: 'GET',
+      httpMethod: 'POST',
       isBase64Encoded: false,
       path: '/',
       pathParameters: null,
@@ -34,7 +29,7 @@ describe('main handler', () => {
         apiId: '1234567890',
         authorizer: null,
         protocol: 'HTTP/1.1',
-        httpMethod: 'GET',
+        httpMethod: 'POST',
         identity: {
           accessKey: null,
           accountId: null,
@@ -63,7 +58,7 @@ describe('main handler', () => {
       multiValueHeaders: {},
     };
 
-    const context: Context = {
+    const context = {
       callbackWaitsForEmptyEventLoop: false,
       functionName: 'test-function',
       functionVersion: '$LATEST',
@@ -79,11 +74,7 @@ describe('main handler', () => {
       succeed: () => {},
     };
 
-    const result = (await main(
-      event,
-      context,
-      () => {},
-    )) as APIGatewayProxyResult;
+    const result = await main(event, context, () => {});
 
     expect(result.statusCode).toBe(200);
     expect(JSON.parse(result.body)).toEqual({ message: 'Hello World' });

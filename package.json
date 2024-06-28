@@ -34,7 +34,13 @@
     "@aws-lambda-powertools/logger": "^2.2.0",
     "@aws-lambda-powertools/metrics": "^2.2.0",
     "@aws-lambda-powertools/tracer": "^2.2.0",
-    "@middy/core": "^5.4.1"
+    "@middy/core": "^5.4.1",
+    "@middy/http-error-handler": "^5.4.2",
+    "@middy/http-event-normalizer": "^5.4.2",
+    "@middy/http-json-body-parser": "^5.4.2",
+    "@middy/http-response-serializer": "^5.4.2",
+    "@middy/http-security-headers": "^5.4.2",
+    "@middy/input-output-logger": "^5.4.2"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
