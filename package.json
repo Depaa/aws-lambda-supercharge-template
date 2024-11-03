@@ -7,7 +7,8 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "build": "npx esbuild $INPUT_FILE --bundle --outfile=$OUTPUT_FILE --target=es2020 --format=esm --minify --sourcemap --tree-shaking=true --platform=node"
   },
   "author": "Matteo Depascale",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "@types/node": "^20.14.8",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
     "@typescript-eslint/parser": "^7.14.1",
+    "esbuild": "0.23.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
@@ -40,7 +42,16 @@
     "@middy/http-json-body-parser": "^5.4.2",
     "@middy/http-response-serializer": "^5.4.2",
     "@middy/http-security-headers": "^5.4.2",
-    "@middy/input-output-logger": "^5.4.2"
+    "@middy/input-output-logger": "^5.4.2",
+    "@aws-sdk/client-dynamodb": "^3.606.0",
+    "@aws-sdk/client-lambda": "^3.608.0",
+    "@aws-sdk/client-rds": "^3.606.0",
+    "@aws-sdk/client-rds-data": "^3.606.0",
+    "@aws-sdk/client-s3": "^3.608.0",
+    "@aws-sdk/client-secrets-manager": "^3.606.0",
+    "@aws-sdk/client-sns": "^3.606.0",
+    "@aws-sdk/client-sqs": "^3.606.0",
+    "aws-xray-sdk": "^3.9.0"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
